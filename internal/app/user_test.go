@@ -1,13 +1,10 @@
 package app
 
 import (
-	"reflect"
-	"testing"
 	"time"
 
 	"github.com/passwall/passwall-server/internal/config"
 	"github.com/passwall/passwall-server/internal/storage"
-	"github.com/passwall/passwall-server/model"
 	uuid "github.com/satori/go.uuid"
 )
 
@@ -154,35 +151,35 @@ var (
 // }
 
 // todo : complete TestUpdateUser, once the issues fixed above
-func TestUpdateUser(t *testing.T) {
-	type args struct {
-		s            storage.Store
-		user         *model.User
-		userDTO      *model.UserDTO
-		isAuthorized bool
-	}
-	tests := []struct {
-		name    string
-		args    args
-		want    *model.User
-		wantErr bool
-	}{
-		// todo: add different test scenarios
-		{},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got, err := UpdateUser(tt.args.s, tt.args.user, tt.args.userDTO, tt.args.isAuthorized)
-			if (err != nil) != tt.wantErr {
-				t.Errorf("UpdateUser() error = %v, wantErr %v", err, tt.wantErr)
-				return
-			}
-			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("UpdateUser() got = %v, want %v", got, tt.want)
-			}
-		})
-	}
-}
+// func TestUpdateUser(t *testing.T) {
+// 	type args struct {
+// 		s            storage.Store
+// 		user         *model.User
+// 		userDTO      *model.UserDTO
+// 		isAuthorized bool
+// 	}
+// 	tests := []struct {
+// 		name    string
+// 		args    args
+// 		want    *model.User
+// 		wantErr bool
+// 	}{
+// 		// todo: add different test scenarios
+// 		{},
+// 	}
+// 	for _, tt := range tests {
+// 		t.Run(tt.name, func(t *testing.T) {
+// 			got, err := UpdateUser(tt.args.s, tt.args.user, tt.args.userDTO, tt.args.isAuthorized)
+// 			if (err != nil) != tt.wantErr {
+// 				t.Errorf("UpdateUser() error = %v, wantErr %v", err, tt.wantErr)
+// 				return
+// 			}
+// 			if !reflect.DeepEqual(got, tt.want) {
+// 				t.Errorf("UpdateUser() got = %v, want %v", got, tt.want)
+// 			}
+// 		})
+// 	}
+// }
 
 func initDB() (*storage.Database, error) {
 	mockDBConfig := &config.DatabaseConfiguration{
